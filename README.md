@@ -4,4 +4,4 @@ This code shows how to implement a weather-vane or compass with the LVGL meter w
 
  ## Picture of Weather-Vane running on Elecrow 7 inch Crowpanel
 
-![esp32s3](photos/weather-vane.mp4)
+![esp32s3](photos/weather-vane.jpg)
