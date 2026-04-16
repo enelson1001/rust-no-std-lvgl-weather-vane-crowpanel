@@ -155,7 +155,7 @@ unsafe extern "C" fn flush_trampoline(
 ) {
     unsafe {
         let area = &*area;
-        let fb_ptr = FB1_ADDR.load(Ordering::Relaxed) as *mut u16;
+        let fb_ptr = FB1_ADDR.load(Ordering::Acquire) as *mut u16;
 
         // Width and height of the dirty patch
         let patch_width = (area.x2 - area.x1 + 1) as usize;
@@ -221,7 +221,6 @@ pub fn update_touch_data(x: i16, y: i16, pressed: bool) {
 }
 
 unsafe extern "C" {
-    // This tells the Rust compiler that the function is defined
-    // elsewhere (the linker will find it in the ROM at 0x400016f8)
+    // This tells the Rust compiler that the function is defined elsewhere
     pub fn rom_Cache_WriteBack_Addr(addr: u32, size: u32);
 }

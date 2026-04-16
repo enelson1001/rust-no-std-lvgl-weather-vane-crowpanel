@@ -149,7 +149,7 @@ unsafe impl DmaTxBuffer for BounceBufferDma {
 #[ram]
 pub fn fill_bounce_buffer(chunk_num: usize) {
     unsafe {
-        let fb_ptr = FB1_ADDR.load(Ordering::Relaxed);
+        let fb_ptr = FB1_ADDR.load(Ordering::Acquire);
         let offset = chunk_num * 12 * SCREEN_WIDTH * BYTES_PER_PIXEL;
         let src_ptr: *const u8 = fb_ptr.add(offset);
 
